@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Día Mamá</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #ffd1dc 0%, #ffb6d9 25%, #d4a5d9 50%, #b4a7f5 75%, #a8d8ea 100%);
+            overflow: hidden;
+        }
+
+        .corazones {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .corazon {
+            position: absolute;
+            font-size: 20px;
+            animation: flotar 8s infinite ease-in-out;
+            opacity: 0.6;
+        }
+
+        @keyframes flotar {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            50% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .tarjeta-contenedor {
+            position: relative;
+            z-index: 2;
+            perspective: 1000px;
+        }
+
+        .tarjeta {
+            width: 400px;
+            height: 550px;
+            background: linear-gradient(135deg, #fff5f8 0%, #ffe4f0 100%);
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            animation: entrada 1s ease-out, latido 2s infinite ease-in-out 1s;
+        }
+
+        @keyframes entrada {
+            from {
+                transform: scale(0) rotate(-180deg);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1) rotate(0deg);
+                opacity: 1;
+            }
+        }
+
+        @keyframes latido {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.02);
+            }
+        }
+
+        .decoracion {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.3;
+        }
+
+        .circulo1 {
+            width: 150px;
+            height: 150px;
+            background: #ffb3d9;
+            top: -50px;
+            right: -50px;
+        }
+
+        .circulo2 {
+            width: 100px;
+            height: 100px;
+            background: #d4a5f5;
+            bottom: -30px;
+            left: -30px;
+        }
+
+        .circulo3 {
+            width: 80px;
+            height: 80px;
+            background: #a8d8ea;
+            top: 50%;
+            right: -20px;
+        }
+
+        .icono-corazon {
+            font-size: 70px;
+            color: #ff69b4;
+            margin-bottom: 20px;
+            animation: pulso 1.5s infinite;
+        }
+
+        @keyframes pulso {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+        }
+
+        h1 {
+            font-size: 32px;
+            color: #d946a6;
+            text-align: center;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            animation: brillo 3s infinite;
+        }
+
+        @keyframes brillo {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.8;
+            }
+        }
+
+        .nombre {
+            font-size: 38px;
+            color: #c026d3;
+            font-weight: bold;
+            margin-bottom: 25px;
+            text-align: center;
+            animation: aparecer 2s ease-out;
+        }
+
+        @keyframes aparecer {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .mensaje {
+            font-size: 18px;
+            color: #7c3aed;
+            text-align: center;
+            line-height: 1.8;
+            font-style: italic;
+            padding: 0 10px;
+            animation: aparecer 2.5s ease-out;
+        }
+
+        .flores {
+            position: absolute;
+            bottom: 20px;
+            font-size: 30px;
+            animation: balanceo 3s infinite ease-in-out;
+        }
+
+        .flores.izq {
+            left: 20px;
+        }
+
+        .flores.der {
+            right: 20px;
+        }
+
+        @keyframes balanceo {
+            0%, 100% {
+                transform: rotate(-10deg);
+            }
+            50% {
+                transform: rotate(10deg);
+            }
+        }
+
+        .firma {
+            margin-top: 30px;
+            font-size: 16px;
+            color: #a855f7;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="corazones" id="corazones"></div>
+    
+    <div class="tarjeta-contenedor">
+        <div class="tarjeta">
+            <div class="decoracion circulo1"></div>
+            <div class="decoracion circulo2"></div>
+            <div class="decoracion circulo3"></div>
+            
+            <div class="icono-corazon">💖</div>
+            
+            <h1>¡Feliz Día de la Madre!</h1>
+            
+            <div class="nombre">Debora Gomez</div>
+            
+            <div class="mensaje">
+                "Tu amor es el abrazo que reconforta,<br>
+                la luz que ilumina mi camino,<br>
+                y la fuerza que me inspira cada día.<br>
+                Gracias por ser mi superheroína sin capa."
+            </div>
+            
+            <div class="flores izq">🌸</div>
+            <div class="flores der">🌺</div>
+            
+            <div class="firma">Con todo mi amor ❤️</div>
+        </div>
+    </div>
+
+    <script>
+        const contenedorCorazones = document.getElementById('corazones');
+        const corazonesIconos = ['❤️', '💕', '💖', '💗', '💝', '💓', '🌹', '🌸'];
+        
+        function crearCorazon() {
+            const corazon = document.createElement('div');
+            corazon.className = 'corazon';
+            corazon.innerHTML = corazonesIconos[Math.floor(Math.random() * corazonesIconos.length)];
+            corazon.style.left = Math.random() * 100 + '%';
+            corazon.style.animationDuration = (Math.random() * 5 + 5) + 's';
+            corazon.style.animationDelay = Math.random() * 3 + 's';
+            contenedorCorazones.appendChild(corazon);
+            
+            setTimeout(() => {
+                corazon.remove();
+            }, 8000);
+        }
+        
+        setInterval(crearCorazon, 500);
+        
+        for(let i = 0; i < 10; i++) {
+            setTimeout(crearCorazon, i * 300);
+        }
+    </script>
+</body>
+</html>
